@@ -1,11 +1,11 @@
-import { createUserRankTemplate } from "./view/user-rank.js";
-import { renderTemplate, RenderPosition } from "./render.js";
-import { createMainNavMenuTemplate } from "./view/main-nav-menu.js";
-import { createSortListTemplate } from "./view/sorting.js";
-import { createFilmCardTemplate } from "./view/film-card.js";
-import { createShowMoreBtnTemplate } from "./view/show-more-btn.js";
-import { createFilmsBoardListTemplate } from "./view/films-board.js";
-import { createFooterStatsTemplate } from "./view/footer-stats.js";
+import { createUserRankTemplate } from './view/user-rank.js';
+import { renderTemplate, RenderPosition } from './render.js';
+import { createMainNavMenuTemplate } from './view/main-nav-menu.js';
+import { createSortListTemplate } from './view/sorting.js';
+import { createFilmCardTemplate } from './view/film-card.js';
+import { createShowMoreBtnTemplate } from './view/show-more-btn.js';
+import { createFilmsBoardListTemplate } from './view/films-board.js';
+import { createFooterStatsTemplate } from './view/footer-stats.js';
 
 const headerEl = document.querySelector('.header');
 const mainEl = document.querySelector('.main');
@@ -22,7 +22,7 @@ const footer = document.querySelector('.footer');
 const footerStats = footer.querySelector('.footer__statistics');
 
 for (let i = 0; i < FILM_QUANTITY_CARD; i++) {
-    renderTemplate(filmsListContainer, createFilmCardTemplate(), RenderPosition.BEFOREEND);
+  renderTemplate(filmsListContainer, createFilmCardTemplate(), RenderPosition.BEFOREEND);
 }
 
 renderTemplate(mainEl, createShowMoreBtnTemplate(), RenderPosition.BEFOREEND);
