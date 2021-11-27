@@ -6,9 +6,9 @@ const getRandomInteger = (a = 0, b = 1) => {
 };
 
 const getRandomDecilmalNum = () => {
-    let decimal = Math.random() * 10;
+  const decimal = Math.random() * 10;
   return decimal.toFixed(1);
-}
+};
 
 const generateDescription = () => {
   const descriptions = [
@@ -17,11 +17,11 @@ const generateDescription = () => {
     'Fusce tristique felis at fermentum pharetra.',
     'Aliquam id orci ut lectus varius viverra',
     'Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante.',
-  ]
+  ];
 
   const randomIndex = getRandomInteger(0, descriptions.length - 1);
   return descriptions[randomIndex];
-}
+};
 
 const generateTitle = () => {
   const titles = [
@@ -32,11 +32,11 @@ const generateTitle = () => {
     'the-dance-of-life',
     'the-great-flamarion',
     'the-man-with-the-golden-arm',
-  ]
+  ];
 
   const randomIndex = getRandomInteger(0, titles.length - 1);
   return titles[randomIndex];
-}
+};
 
 const generatePoster = () => {
   const posters = [
@@ -47,31 +47,31 @@ const generatePoster = () => {
     './images/posters/the-dance-of-life.jpg',
     './images/posters/the-great-flamarion.jpg',
     './images/posters/the-man-with-the-golden-arm.jpg',
-  ]
+  ];
 
   const randomIndex = getRandomInteger(0, posters.length - 1);
   return posters[randomIndex];
-}
+};
 
 const genres = [
-  'Action', 
-  'Drama', 
-  'Comedy', 
+  'Action',
+  'Drama',
+  'Comedy',
   'Sci-fy',
   'Musical'
-]
+];
 
 // const emotions = [
-//   "smile",
-//   "sleeping",
-//   "puke", 
-//   "angry"
+//  "smile",
+//  "sleeping",
+//  "puke",
+//  "angry"
 // ]
 
 const localComents = {
   comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
   emotion: 'smile'
-}
+};
 
 // const comments = [
 //   {
