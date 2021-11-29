@@ -65,7 +65,7 @@ const generateDuration = () => {
     '1h 35m',
     '2h 15m',
     '2h 45m',
-  ]
+  ];
 
   const randomIndex = getRandomInteger(0, durationPeriods.length - 1);
   return durationPeriods[randomIndex];
@@ -80,7 +80,7 @@ const genres = [
 ];
 
 export const generateFilm = () => ({
-  user_controls: {
+  userControls: {
     addToWatchList: false,
     AlreadyWatched: false,
     AddToFavorites: false

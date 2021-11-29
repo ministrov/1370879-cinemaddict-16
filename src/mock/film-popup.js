@@ -1,11 +1,11 @@
 import { getRandomInteger } from '../utils';
 
 const emotions = [
- "smile",
- "sleeping",
- "puke",
- "angry"
-]
+  'smile',
+  'sleeping',
+  'puke',
+  'angry'
+];
 
 // const localComents = {
 //   comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
@@ -37,12 +37,12 @@ const comments = [
 ];
 
 export const generateFilmPopup = () => ({
-  film_info: {
+  filmInfo: {
     title: 'The Great Flamarion',
-    alternative_title: 'The Great Flamarion',
-    total_rating: 8.9,
+    alternativeTitle: 'The Great Flamarion',
+    totalRating: 8.9,
     poster: '',
-    age_rating: 18,
+    ageRating: 18,
     directors: [
       'Anthony Mann'
     ],
@@ -58,7 +58,7 @@ export const generateFilmPopup = () => ({
     ],
     release: {
       date: '30 March 1945',
-      release_country: 'USA'
+      releaseCountry: 'USA'
     },
     runtime: '1h 18m',
     genre: [
@@ -75,10 +75,10 @@ export const generateFilmPopup = () => ({
       with Connie, the movies femme fatale, and is soon manipulated by her into 
       killing her no good husband during one of their acts.'`
   },
-  user_controls: {
+  userControls: {
     watchlist: false,
-    alredy_watched: true,
-    watching_date: '',
+    alredyWatched: true,
+    watchingDate: '',
     favorite: false
   },
   comments: comments[getRandomInteger(0, 2)]

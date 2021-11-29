@@ -9,3 +9,4 @@ export const getRandomDecilmalNum = () => {
   const decimal = Math.random() * 10;
   return decimal.toFixed(1);
 };
+
