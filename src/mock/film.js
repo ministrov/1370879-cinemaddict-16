@@ -1,14 +1,4 @@
-const getRandomInteger = (a = 0, b = 1) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-
-  return Math.floor(lower + Math.random() * (upper - lower + 1));
-};
-
-const getRandomDecilmalNum = () => {
-  const decimal = Math.random() * 10;
-  return decimal.toFixed(1);
-};
+import { getRandomInteger, getRandomDecilmalNum } from '../utils.js';
 
 const generateDescription = () => {
   const descriptions = [
@@ -53,6 +43,34 @@ const generatePoster = () => {
   return posters[randomIndex];
 };
 
+const generateYear = () => {
+  const years = [
+    '1925',
+    '1945',
+    '1957',
+    '1975',
+    '1984',
+    '1998',
+  ];
+
+  const randomIndex = getRandomInteger(0, years.length - 1);
+  return years[randomIndex];
+};
+
+const generateDuration = () => {
+  const durationPeriods = [
+    '1h 55m',
+    '2h 05m',
+    '1h 45m',
+    '1h 35m',
+    '2h 15m',
+    '2h 45m',
+  ]
+
+  const randomIndex = getRandomInteger(0, durationPeriods.length - 1);
+  return durationPeriods[randomIndex];
+};
+
 const genres = [
   'Action',
   'Drama',
@@ -61,49 +79,18 @@ const genres = [
   'Musical'
 ];
 
-// const emotions = [
-//  "smile",
-//  "sleeping",
-//  "puke",
-//  "angry"
-// ]
-
-const localComents = {
-  comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
-  emotion: 'smile'
-};
-
-// const comments = [
-//   {
-//     id: '42',
-//     author: 'Ilya O\'Reilly',
-//     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
-//     date: '2019-05-11T16:12:32.554Z',
-//     emotion: emotions[getRandomInteger(0, 3)]
-//   },
-//   {
-//     id: '21',
-//     author: 'Pavel Gomes',
-//     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
-//     date: '2020-06-13T16:12:32.554Z',
-//     emotion: emotions[getRandomInteger(0, 3)]
-//   },
-//   {
-//     id: '2',
-//     author: 'Bruno Fernandes',
-//     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
-//     date: '2020-07-01T16:12:32.554Z',
-//     emotion: emotions[getRandomInteger(0, 3)]
-//   }
-// ]
-
 export const generateFilm = () => ({
-  id: getRandomInteger(0, 10),
+  user_controls: {
+    addToWatchList: false,
+    AlreadyWatched: false,
+    AddToFavorites: false
+  },
   title: generateTitle(),
   poster: generatePoster(),
   description: generateDescription(),
   genre: genres[getRandomInteger(0, 3)],
-  year: 2010,
-  comment: localComents.comment,
+  year: generateYear(),
+  duration: generateDuration(),
+  comment: getRandomInteger(0, 10),
   ratio: getRandomDecilmalNum(),
 });

@@ -30,4 +30,4 @@ for (let i = 0; i < FILM_QUANTITY_CARD; i++) {
 
 renderTemplate(mainEl, createShowMoreBtnTemplate(), RenderPosition.BEFOREEND);
 renderTemplate(footerStats, createFooterStatsTemplate(), RenderPosition.BEFOREEND);
-renderTemplate(mainEl, createFilmDetailsPopupTemplate(), RenderPosition.BEFOREEND);
+// renderTemplate(mainEl, createFilmDetailsPopupTemplate(), RenderPosition.BEFOREEND);
