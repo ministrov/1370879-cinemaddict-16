@@ -13,7 +13,7 @@ const generateDescription = () => {
   return descriptions[randomIndex];
 };
 
-const generateTitle = () => {
+export const generateTitle = () => {
   const titles = [
     'made-for-each-other',
     'popeye-meets-sinbad',
@@ -28,7 +28,7 @@ const generateTitle = () => {
   return titles[randomIndex];
 };
 
-const generatePoster = () => {
+export const generatePoster = () => {
   const posters = [
     './images/posters/made-for-each-other.png',
     './images/posters/popeye-meets-sinbad.png',

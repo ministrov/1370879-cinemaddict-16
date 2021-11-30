@@ -11,7 +11,7 @@ import { generateFilm } from './mock/film.js';
 
 const headerEl = document.querySelector('.header');
 const mainEl = document.querySelector('.main');
-const FILM_QUANTITY_CARD = 5;
+const FILM_QUANTITY_CARD = 15;
 const films = Array.from({length: FILM_QUANTITY_CARD}, generateFilm);
 
 renderTemplate(headerEl, createUserRankTemplate(), RenderPosition.BEFOREEND);
@@ -30,4 +30,4 @@ for (let i = 0; i < FILM_QUANTITY_CARD; i++) {
 
 renderTemplate(mainEl, createShowMoreBtnTemplate(), RenderPosition.BEFOREEND);
 renderTemplate(footerStats, createFooterStatsTemplate(), RenderPosition.BEFOREEND);
-renderTemplate(mainEl, createFilmDetailsPopupTemplate(), RenderPosition.BEFOREEND);
+// renderTemplate(mainEl, createFilmDetailsPopupTemplate(), RenderPosition.BEFOREEND);

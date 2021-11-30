@@ -1,4 +1,5 @@
-import { getRandomInteger } from '../utils';
+import { getRandomInteger, getRandomDecilmalNum } from '../utils';
+import { generateTitle, generatePoster } from './film';
 
 const emotions = [
   'smile',
@@ -38,10 +39,10 @@ const comments = [
 
 export const generateFilmPopup = () => ({
   filmInfo: {
-    title: 'The Great Flamarion',
+    title: generateTitle(),
     alternativeTitle: 'The Great Flamarion',
-    totalRating: 8.9,
-    poster: '',
+    totalRating: getRandomDecilmalNum(),
+    poster: generatePoster(),
     ageRating: 18,
     directors: [
       'Anthony Mann'
@@ -77,7 +78,7 @@ export const generateFilmPopup = () => ({
   },
   userControls: {
     watchlist: false,
-    alredyWatched: true,
+    alreadyWatched: true,
     watchingDate: '',
     favorite: false
   },
