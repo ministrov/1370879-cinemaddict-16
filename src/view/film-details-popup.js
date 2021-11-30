@@ -1,6 +1,5 @@
-export const createFilmDetailsPopupTemplate = ({filmInfo, id}) => { 
-  const {title, poster} = filmInfo;
-
+export const createFilmDetailsPopupTemplate = ({filmInfo, id}) => {
+  const {title, poster, totalRating} = filmInfo;
   return `<section class="film-details">
     <form class="film-details__inner" action="" method="get">
     <div class="film-details__top-container">
@@ -24,7 +23,7 @@ export const createFilmDetailsPopupTemplate = ({filmInfo, id}) => {
             </div>
             <table class="film-details__table">
                <tr class="film-details__row">
-                  <td class="film-details__term">Director</td>
+                  <td class="film-details__term">Director${id}</td>
                   <td class="film-details__cell">Anthony Mann</td>
                </tr>
                <tr class="film-details__row">
@@ -299,5 +298,5 @@ export const createFilmDetailsPopupTemplate = ({filmInfo, id}) => {
       </section>
     </div>
   </form>
-</section>`
+</section>`;
 };

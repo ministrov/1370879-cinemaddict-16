@@ -1,5 +1,8 @@
-const filmToFilterMap = {
-  watchList: () => {},
-  alreadyWatched: () => {}, 
-  favorites: () => {}
-};
+// const filmToFilterMap = {
+//   watchList: () => {},
+//   alreadyWatched: () => {},
+//   favorites: () => {}
+// };
+
+// filmToFilterMap;
+
