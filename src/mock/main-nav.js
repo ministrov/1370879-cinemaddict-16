@@ -1,8 +1,8 @@
-// const filmToFilterMap = {
+// export const filmToFilterMap = () => ({
 //   watchList: () => {},
 //   alreadyWatched: () => {},
 //   favorites: () => {}
-// };
+// });
 
 // filmToFilterMap;
 

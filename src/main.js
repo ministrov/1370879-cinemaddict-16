@@ -6,13 +6,15 @@ import { createFilmCardTemplate } from './view/film-card.js';
 import { createShowMoreBtnTemplate } from './view/show-more-btn.js';
 import { createFilmsBoardListTemplate } from './view/films-board.js';
 import { createFooterStatsTemplate } from './view/footer-stats.js';
-import { createFilmDetailsPopupTemplate } from './view/film-details-popup.js';
+import { createFilmPopupTemplate } from './view/film-details-popup.js';
 import { generateFilm } from './mock/film.js';
+import { generateFilmPopup } from './mock/film-popup.js';
 
 const headerEl = document.querySelector('.header');
 const mainEl = document.querySelector('.main');
 const FILM_QUANTITY_CARD = 15;
 const films = Array.from({length: FILM_QUANTITY_CARD}, generateFilm);
+const popup = generateFilmPopup();
 
 renderTemplate(headerEl, createUserRankTemplate(), RenderPosition.BEFOREEND);
 renderTemplate(mainEl, createMainNavMenuTemplate(), RenderPosition.BEFOREEND);
@@ -30,4 +32,4 @@ for (let i = 0; i < FILM_QUANTITY_CARD; i++) {
 
 renderTemplate(mainEl, createShowMoreBtnTemplate(), RenderPosition.BEFOREEND);
 renderTemplate(footerStats, createFooterStatsTemplate(), RenderPosition.BEFOREEND);
-renderTemplate(mainEl, createFilmDetailsPopupTemplate(), RenderPosition.BEFOREEND);
+renderTemplate(mainEl, createFilmPopupTemplate(popup), RenderPosition.BEFOREEND);

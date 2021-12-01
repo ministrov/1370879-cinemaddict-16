@@ -1,41 +1,41 @@
-import { getRandomInteger, getRandomDecilmalNum } from '../utils';
+import { getRandomDecilmalNum } from '../utils';
 import { generateTitle, generatePoster } from './film';
 
-const emotions = [
-  'smile',
-  'sleeping',
-  'puke',
-  'angry'
-];
+// const emotions = [
+//   'smile',
+//   'sleeping',
+//   'puke',
+//   'angry'
+// ];
 
 // const localComents = {
 //   comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
 //   emotion: 'smile'
 // };
 
-const comments = [
-  {
-    id: '42',
-    author: 'Ilya O\'Reilly',
-    comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
-    date: '2019-05-11T16:12:32.554Z',
-    emotion: emotions[getRandomInteger(0, 3)]
-  },
-  {
-    id: '21',
-    author: 'Pavel Gomes',
-    comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
-    date: '2020-06-13T16:12:32.554Z',
-    emotion: emotions[getRandomInteger(0, 3)]
-  },
-  {
-    id: '2',
-    author: 'Bruno Fernandes',
-    comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
-    date: '2020-07-01T16:12:32.554Z',
-    emotion: emotions[getRandomInteger(0, 3)]
-  }
-];
+// const comments = [
+//   {
+//     id: '42',
+//     author: 'Ilya O\'Reilly',
+//     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
+//     date: '2019-05-11T16:12:32.554Z',
+//     emotion: emotions[getRandomInteger(0, 3)]
+//   },
+//   {
+//     id: '21',
+//     author: 'Pavel Gomes',
+//     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
+//     date: '2020-06-13T16:12:32.554Z',
+//     emotion: emotions[getRandomInteger(0, 3)]
+//   },
+//   {
+//     id: '2',
+//     author: 'Bruno Fernandes',
+//     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
+//     date: '2020-07-01T16:12:32.554Z',
+//     emotion: emotions[getRandomInteger(0, 3)]
+//   }
+// ];
 
 export const generateFilmPopup = () => ({
   filmInfo: {
@@ -76,11 +76,11 @@ export const generateFilmPopup = () => ({
       with Connie, the movies femme fatale, and is soon manipulated by her into 
       killing her no good husband during one of their acts.'`
   },
-  userControls: {
+  userDetails: {
     watchlist: false,
     alreadyWatched: true,
     watchingDate: '',
     favorite: false
   },
-  comments: comments[getRandomInteger(0, 2)]
+  comments: []
 });
