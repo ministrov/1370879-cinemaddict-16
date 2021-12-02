@@ -1,16 +1,18 @@
-import { getRandomInteger, getRandomDecilmalNum } from '../utils.js';
+import { getRandomDecilmalNum, getRandomInteger } from '../utils';
 
-const generateDescription = () => {
-  const descriptions = [
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    'Cras aliquet varius magna, non porta ligula feugiat eget',
-    'Fusce tristique felis at fermentum pharetra.',
-    'Aliquam id orci ut lectus varius viverra',
-    'Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante.',
+const generatePoster = () => {
+  const posters = [
+    './images/posters/made-for-each-other.png',
+    './images/posters/popeye-meets-sinbad.png',
+    './images/posters/sagebrush-trail.jpg',
+    './images/posters/santa-claus-conquers-the-martians.jpg',
+    './images/posters/the-dance-of-life.jpg',
+    './images/posters/the-great-flamarion.jpg',
+    './images/posters/the-man-with-the-golden-arm.jpg',
   ];
 
-  const randomIndex = getRandomInteger(0, descriptions.length - 1);
-  return descriptions[randomIndex];
+  const randomIndex = getRandomInteger(0, posters.length - 1);
+  return posters[randomIndex];
 };
 
 export const generateTitle = () => {
@@ -28,36 +30,7 @@ export const generateTitle = () => {
   return titles[randomIndex];
 };
 
-export const generatePoster = () => {
-  const posters = [
-    './images/posters/made-for-each-other.png',
-    './images/posters/popeye-meets-sinbad.png',
-    './images/posters/sagebrush-trail.jpg',
-    './images/posters/santa-claus-conquers-the-martians.jpg',
-    './images/posters/the-dance-of-life.jpg',
-    './images/posters/the-great-flamarion.jpg',
-    './images/posters/the-man-with-the-golden-arm.jpg',
-  ];
-
-  const randomIndex = getRandomInteger(0, posters.length - 1);
-  return posters[randomIndex];
-};
-
-const generateYear = () => {
-  const years = [
-    '1925',
-    '1945',
-    '1957',
-    '1975',
-    '1984',
-    '1998',
-  ];
-
-  const randomIndex = getRandomInteger(0, years.length - 1);
-  return years[randomIndex];
-};
-
-const generateDuration = () => {
+const generateRuntime = () => {
   const durationPeriods = [
     '1h 55m',
     '2h 05m',
@@ -76,21 +49,88 @@ const genres = [
   'Drama',
   'Comedy',
   'Sci-fy',
+  'Film-Noir',
   'Musical'
 ];
 
+
+// const emotions = [
+//   'smile',
+//   'sleeping',
+//   'puke',
+//   'angry'
+// ];
+
+// const localComents = {
+//   comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
+//   emotion: 'smile'
+// };
+
+// const comments = [
+//   {
+//     id: '42',
+//     author: 'Ilya O\'Reilly',
+//     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
+//     date: '2019-05-11T16:12:32.554Z',
+//     emotion: emotions[getRandomInteger(0, 3)]
+//   },
+//   {
+//     id: '21',
+//     author: 'Pavel Gomes',
+//     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
+//     date: '2020-06-13T16:12:32.554Z',
+//     emotion: emotions[getRandomInteger(0, 3)]
+//   },
+//   {
+//     id: '2',
+//     author: 'Bruno Fernandes',
+//     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
+//     date: '2020-07-01T16:12:32.554Z',
+//     emotion: emotions[getRandomInteger(0, 3)]
+//   }
+// ];
+
 export const generateFilm = () => ({
-  userControls: {
-    addToWatchList: false,
-    AlreadyWatched: false,
-    AddToFavorites: false
+  id: '0',
+  filmInfo: {
+    title: generateTitle(),
+    alternativeTitle: 'The Great Flamarion',
+    totalRating: getRandomDecilmalNum(),
+    poster: generatePoster(),
+    ageRating: 18,
+    directors: [
+      'Anthony Mann'
+    ],
+    writers: [
+      'Anne Wigton',
+      'Heinz Herald',
+      'Richard Weil'
+    ],
+    actors: [
+      'Erich von Stroheim',
+      'Mary Beth Hughes',
+      'Dan Duryea'
+    ],
+    release: {
+      date: '30 March 1945',
+      releaseCountry: 'USA'
+    },
+    runtime: generateRuntime(),
+    genre: genres[getRandomInteger(0, 5)],
+    description: `'The film opens following a murder at a cabaret in Mexico City
+    in 1936, and then presents the events leading up to it in flashback. The Great 
+    Flamarion (Erich von Stroheim) is an arrogant, friendless, and misogynous
+     marksman who displays his trick gunshot act in the vaudeville circuit. His
+     show features a beautiful assistant, Connie (Mary Beth Hughes) and her drunken
+      husband Al (Dan Duryea), Flamarions other assistant. Flamarion falls in love 
+      with Connie, the movies femme fatale, and is soon manipulated by her into 
+      killing her no good husband during one of their acts.'`
   },
-  title: generateTitle(),
-  poster: generatePoster(),
-  description: generateDescription(),
-  genre: genres[getRandomInteger(0, 3)],
-  year: generateYear(),
-  duration: generateDuration(),
-  comment: getRandomInteger(0, 10),
-  ratio: getRandomDecilmalNum(),
+  userDetails: {
+    watchlist: false,
+    alreadyWatched: true,
+    watchingDate: '',
+    favorite: false
+  },
+  comments: getRandomInteger(0, 9)
 });
