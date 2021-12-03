@@ -127,10 +127,10 @@ export const generateFilm = () => ({
       killing her no good husband during one of their acts.'`
   },
   userDetails: {
-    watchlist: false,
-    alreadyWatched: true,
+    watchlist: (Math.random() * 100) > 50,
+    alreadyWatched: (Math.random() * 100) > 50,
     watchingDate: '',
-    favorite: false
+    favorite: (Math.random() * 100) > 50
   },
   comments: getRandomInteger(0, 9)
 });
