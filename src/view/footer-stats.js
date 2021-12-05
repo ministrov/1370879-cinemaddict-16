@@ -1,4 +1,4 @@
-import { createElement } from "../render";
+import { createElement } from '../render';
 
 const createFooterStatsTemplate = () => (
   `<p>130 291 movies inside</p>
@@ -23,6 +23,6 @@ export default class FooterStats {
   removeElement() {
     this.#element = null;
   }
-};
+}
 
 

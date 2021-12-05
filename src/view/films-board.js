@@ -1,4 +1,4 @@
-import { createElement } from "../render";
+import { createElement } from '../render';
 
 const createFilmsBoardTemplate = () => (
   `<section class="films-list">
@@ -14,7 +14,7 @@ export default class FilmsBoard {
 
   get element() {
     if (!this.#element) {
-      this.#element = createElement(this.template)
+      this.#element = createElement(this.template);
     }
 
     return this.#element;
@@ -27,4 +27,5 @@ export default class FilmsBoard {
   removeElement() {
     this.#element = null;
   }
-};
+}
+

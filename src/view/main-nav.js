@@ -1,4 +1,4 @@
-import { createElement } from "../render";
+import { createElement } from '../render';
 
 
 const createMainNavTemplate = () => (`<nav class="main-navigation">
@@ -30,4 +30,5 @@ export default class MainNavigation {
   removeElement() {
     this.#element = null;
   }
-};
+}
+

@@ -1,4 +1,4 @@
-import { createElement } from "../render";
+import { createElement } from '../render';
 
 const createSortListTemplate = () => (
   `<ul class="sort">
@@ -26,4 +26,5 @@ export default class SortList {
   removeElement() {
     this.#element = null;
   }
-};
+}
+

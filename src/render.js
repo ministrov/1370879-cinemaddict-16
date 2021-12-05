@@ -31,4 +31,5 @@ export const createElement = (template) => {
   newElement.innerHTML = template;
 
   return newElement.firstChild;
-}
+};
+

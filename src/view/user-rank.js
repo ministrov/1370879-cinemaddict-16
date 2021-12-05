@@ -1,4 +1,4 @@
-import { createElement } from "../render";
+import { createElement } from '../render';
 
 const createUserRankTemplate = () => (
   `<section class="header__profile profile">
@@ -25,4 +25,5 @@ export default class UserRank {
   removeElement() {
     this.#element = null;
   }
-};
+}
+

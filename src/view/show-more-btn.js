@@ -1,4 +1,4 @@
-import { createElement } from "../render";
+import { createElement } from '../render';
 
 const createShowMoreBtnTemplate = () => (
   `<button class='films-list__show-more'>Show more</button>
@@ -23,6 +23,6 @@ export default class ShowMoreBtn {
   removeElement() {
     this.#element = null;
   }
-};
+}
 
 
