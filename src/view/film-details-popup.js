@@ -1,4 +1,4 @@
-import { createElement } from "../render";
+import { createElement } from '../render';
 
 const createPopupTemplate = ({filmInfo}) => {
   const {title, poster, totalRating} = filmInfo;
@@ -156,26 +156,27 @@ const createPopupTemplate = ({filmInfo}) => {
 };
 
 export default class FilmPopup {
-   #element = null;
-   #filmInfo = null;
+  #element = null;
+  #filmInfo = null;
 
-   constructor(filmInfo) {
-      this.#filmInfo = filmInfo;
-   }
+  constructor(filmInfo) {
+    this.#filmInfo = filmInfo;
+  }
 
-   get element() {
-      if (!this.#element) {
-         this.#element = createElement(this.template);
-      }
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
 
-      return this.#element;
-   }
+    return this.#element;
+  }
 
-   get template() {
-      return createPopupTemplate(this.#filmInfo);
-   }
+  get template() {
+    return createPopupTemplate(this.#filmInfo);
+  }
 
-   removeElement() {
-      this.#element = null;
-   }
+  removeElement() {
+    this.#element = null;
+  }
 }
+
