@@ -1,4 +1,6 @@
-export const createPopupTemplate = ({filmInfo}) => {
+import { createElement } from "../render";
+
+const createPopupTemplate = ({filmInfo}) => {
   const {title, poster, totalRating} = filmInfo;
   return `<section class="film-details">
     <form class="film-details__inner" action="" method="get">
@@ -152,3 +154,28 @@ export const createPopupTemplate = ({filmInfo}) => {
 </form>
 </section>`;
 };
+
+export default class FilmPopup {
+   #element = null;
+   #filmInfo = null;
+
+   constructor(filmInfo) {
+      this.#filmInfo = filmInfo;
+   }
+
+   get element() {
+      if (!this.#element) {
+         this.#element = createElement(this.template);
+      }
+
+      return this.#element;
+   }
+
+   get template() {
+      return createPopupTemplate(this.#filmInfo);
+   }
+
+   removeElement() {
+      this.#element = null;
+   }
+}
