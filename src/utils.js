@@ -10,3 +10,10 @@ export const getRandomDecilmalNum = () => {
   return decimal.toFixed(1);
 };
 
+const Keys = {
+  ESC: 'Esc',
+  ESCAPE: 'Escape',
+};
+
+export const isEscEvent = (evt) => evt.key === Keys.ESC || evt.key === Keys.ESCAPE;
+

@@ -1,8 +1,8 @@
 import { createElement } from '../render';
 
-const createFilmCardTemplate = ({filmInfo}) => {
+const createFilmCardTemplate = ({id, filmInfo}) => {
   const {title, totalRating, genre, poster, description, comments, runtime} = filmInfo;
-  return `<article class="film-card">
+  return `<article class="film-card" id="film-${id}">
     <a class="film-card__link">
     <h3 class="film-card__title">${title}</h3>
     <p class="film-card__rating">${totalRating}</p>

@@ -91,7 +91,7 @@ const genres = [
 // ];
 
 export const generateFilm = () => ({
-  id: '0',
+  id: (Math.random() * 100).toFixed(),
   filmInfo: {
     title: generateTitle(),
     alternativeTitle: 'The Great Flamarion',
@@ -118,12 +118,12 @@ export const generateFilm = () => ({
     runtime: generateRuntime(),
     genre: genres[getRandomInteger(0, 5)],
     description: `'The film opens following a murder at a cabaret in Mexico City
-    in 1936, and then presents the events leading up to it in flashback. The Great 
+    in 1936, and then presents the events leading up to it in flashback. The Great
     Flamarion (Erich von Stroheim) is an arrogant, friendless, and misogynous
      marksman who displays his trick gunshot act in the vaudeville circuit. His
      show features a beautiful assistant, Connie (Mary Beth Hughes) and her drunken
-      husband Al (Dan Duryea), Flamarions other assistant. Flamarion falls in love 
-      with Connie, the movies femme fatale, and is soon manipulated by her into 
+      husband Al (Dan Duryea), Flamarions other assistant. Flamarion falls in love
+      with Connie, the movies femme fatale, and is soon manipulated by her into
       killing her no good husband during one of their acts.'`
   },
   userDetails: {
