@@ -10,7 +10,7 @@ import FilmPopup from './view/film-details-popup.js';
 import { generateFilm } from './mock/film.js';
 import { isEscEvent } from './utils.js';
 
-const FILM_QUANTITY_CARD = 15;
+const FILM_QUANTITY_CARD = 3;
 const MAX_FILMS = 5;
 const headerEl = document.querySelector('.header');
 const mainEl = document.querySelector('.main');
@@ -18,6 +18,7 @@ const films = Array.from({length: FILM_QUANTITY_CARD}, generateFilm);
 let currentCount = MAX_FILMS;
 const filmsBoardComp = new FilmsBoard();
 const filmsBoardEl = filmsBoardComp.element.querySelector('.films-list__container');
+const popupComponent = new FilmPopup(films[0]);
 const footer = document.querySelector('.footer');
 const footerStats = footer.querySelector('.footer__statistics');
 
@@ -35,26 +36,34 @@ const onFilmCardClick = (evt) => {
     target = target.closest('article');
   }
 
-  const popupEl = new FilmPopup(films[0]).element;
-  const popup = popupEl.querySelector('.film-details');
-
-  if (popup) {
-    popup.remove();
+  if (popupComponent.element) {
+    popupComponent.element.remove();
   }
 
   const popupData = films.filter((item) => `film-${item.id}` === target.id);
 
   render(mainEl, new FilmPopup(popupData[0]).element, RenderPosition.BEFOREEND);
 
-  const onEscPopupClose = (event) => {
-    if (isEscEvent(event)) {
-      popup.remove();
-      document.removeEventListener('keydown', onEscPopupClose);
-    }
+  document.body.classList.add('hide-overflow');
+
+  const closePopup = () => {
+    mainEl.remove(popupComponent.element);
+    document.body.classList.remove('hide-overflow');
   };
 
-  document.addEventListener('keydown', onEscPopupClose);
+  popupComponent.element.querySelector('.you').addEventListener('click', () => {
+    closePopup();
+  });
 };
+
+const onEscPopupClose = (evt) => {
+  if (isEscEvent(evt)) {
+    popupComponent.remove();
+    document.removeEventListener('keydown', onEscPopupClose);
+  }
+};
+
+popupComponent.element.addEventListener('keydown', onEscPopupClose);
 
 const renderFilmCard = (count) => {
   filmsBoardEl.innerHTML = '';
