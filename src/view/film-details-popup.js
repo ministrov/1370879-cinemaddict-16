@@ -1,11 +1,13 @@
-export const createPopupTemplate = ({filmInfo}) => {
+import { createElement } from '../render';
+
+const createPopupTemplate = ({filmInfo}) => {
   const {title, poster, totalRating} = filmInfo;
   return `<section class="film-details">
-    <form class="film-details__inner" action="" method="get">
-    <div class="film-details__top-container">
-      <div class="film-details__close">
-         <button class="film-details__close-btn" type="button">close</button>
-      </div>
+   <form class="film-details__inner" action="" method="get">
+      <div class="film-details__top-container">
+         <div class="film-details__close">
+            <button class="film-details__close-btn" type="button">close</button>
+         </div>
       <div class="film-details__info-wrap">
          <div class="film-details__poster">
             <img class="film-details__poster-img" src="${poster}" alt="">
@@ -15,7 +17,7 @@ export const createPopupTemplate = ({filmInfo}) => {
             <div class="film-details__info-head">
                <div class="film-details__title-wrap">
                   <h3 class="film-details__title">${title}</h3>
-                  <p class="film-details__title-original">Original: The Great Flamarion</p>
+                  <p class="film-details__title-original">Original: The Great Flamarion</p
                </div>
                <div class="film-details__rating">
                   <p class="film-details__total-rating">${totalRating}</p>
@@ -65,8 +67,8 @@ export const createPopupTemplate = ({filmInfo}) => {
          <button type="button" class="film-details__control-button film-details__control-button--active film-details__control-button--watched" id="watched" name="watched">Already watched</button>
          <button type="button" class="film-details__control-button film-details__control-button--favorite" id="favorite" name="favorite">Add to favorites</button>
       </section>
-   </div>
-   <div class="film-details__bottom-container">
+      </div>
+      <div class="film-details__bottom-container">
       <section class="film-details__comments-wrap">
          <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">4</span></h3>
          <ul class="film-details__comments-list">
@@ -148,7 +150,32 @@ export const createPopupTemplate = ({filmInfo}) => {
             </div>
          </div>
       </section>
-   </div>
-</form>
-</section>`;
+      </div>
+   </form>
+   </section>`;
 };
+
+export default class FilmPopup {
+  #element = null;
+  #filmInfo = null;
+
+  constructor(filmInfo) {
+    this.#filmInfo = filmInfo;
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  get template() {
+    return createPopupTemplate(this.#filmInfo);
+  }
+//   removeElement() {
+//    //  this.#element = null;
+//   }
+}
+
