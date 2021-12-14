@@ -7,6 +7,7 @@ import ShowMoreBtn from './view/show-more-btn.js';
 import FilmsBoard from './view/films-board.js';
 import FooterStats from './view/footer-stats.js';
 import FilmPopup from './view/film-details-popup.js';
+import NoFilmCard from './view/no-film-card.js';
 import { generateFilm } from './mock/film.js';
 import { isEscEvent } from './utils.js';
 
@@ -61,11 +62,14 @@ const onFilmCardClick = (evt) => {
 
 const renderFilmCard = (count) => {
   filmsBoardEl.innerHTML = '';
-
-  for (let i = 0; i < count; i++) {
-    const filmCard = new FilmCard(films[i]);
-    render(filmsBoardEl, filmCard.element, RenderPosition.BEFOREEND);
-    filmCard.element.addEventListener('click', onFilmCardClick);
+  if (films.length === 0) {
+    render(filmsBoardEl, new NoFilmCard().element, RenderPosition.BEFOREEND);
+  } else {
+    for (let i = 0; i < count; i++) {
+      const filmCard = new FilmCard(films[i]);
+      render(filmsBoardEl, filmCard.element, RenderPosition.BEFOREEND);
+      filmCard.element.addEventListener('click', onFilmCardClick);
+    }
   }
 };
 
