@@ -14,6 +14,7 @@ import { isEscEvent } from './utils.js';
 const FILM_QUANTITY_CARD = 15;
 const MAX_FILMS = 5;
 const headerEl = document.querySelector('.header');
+const bodyEl = document.querySelector('body');
 const mainEl = document.querySelector('.main');
 const films = Array.from({length: FILM_QUANTITY_CARD}, generateFilm);
 let currentCount = MAX_FILMS;
@@ -37,7 +38,7 @@ const onFilmCardClick = (evt) => {
     target = target.closest('article');
   }
   const closePopup = () => {
-    mainEl.removeChild(currentPopup.element);
+    bodyEl.removeChild(currentPopup.element);
     document.body.classList.remove('hide-overflow');
     currentPopup = null;
   };
@@ -47,7 +48,7 @@ const onFilmCardClick = (evt) => {
 
   const popupData = films.filter((item) => `film-${item.id}` === target.id);
   currentPopup = new FilmPopup(popupData[0]);
-  render(mainEl, currentPopup.element, RenderPosition.BEFOREEND);
+  render(bodyEl, currentPopup.element, RenderPosition.BEFOREEND);
 
   document.body.classList.add('hide-overflow');
   const closePopupOnEsc = (event) => {
