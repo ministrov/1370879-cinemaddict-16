@@ -1,4 +1,4 @@
-import AbstractView from "./abstract";
+import AbstractView from './abstract';
 
 const createFooterStatsTemplate = () => (
   `<p>130 291 movies inside</p>

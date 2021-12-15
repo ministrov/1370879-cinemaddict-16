@@ -1,4 +1,4 @@
-import AbstractView from "./abstract";
+import AbstractView from './abstract';
 
 const createUserRankTemplate = () => (
   `<section class="header__profile profile">
@@ -12,5 +12,3 @@ export default class UserRank extends AbstractView {
     return createUserRankTemplate();
   }
 }
-
-

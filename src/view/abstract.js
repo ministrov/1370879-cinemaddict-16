@@ -1,4 +1,4 @@
-import { createElement } from "../render";
+import { createElement } from '../render';
 
 export default class AbstractView {
   #element = null;
@@ -25,3 +25,4 @@ export default class AbstractView {
     this.#element = null;
   }
 }
+

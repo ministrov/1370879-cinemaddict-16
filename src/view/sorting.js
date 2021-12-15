@@ -1,4 +1,4 @@
-import AbstractView from "./abstract";
+import AbstractView from './abstract';
 
 const createSortListTemplate = () => (
   `<ul class="sort">
@@ -13,5 +13,4 @@ export default class SortList extends AbstractView {
     return createSortListTemplate();
   }
 }
-
 
