@@ -8,5 +8,15 @@ export default class ShowMoreBtn extends AbstractView {
   get template() {
     return createShowMoreBtnTemplate();
   }
+
+  addMoreFilmOnBtnClick = (callback) => {
+    this._callback.addFilm = callback;
+    this.element.addEventListener('click', this.#addFilmCardOnClick);
+  }
+
+  #addFilmCardOnClick = (evt) => {
+    evt.preventDefault();
+    this._callback.addFilm();
+  }
 }
 

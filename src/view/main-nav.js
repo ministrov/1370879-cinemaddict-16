@@ -1,5 +1,4 @@
-import { createElement } from '../render';
-
+import AbstractView from './abstract';
 
 const createMainNavTemplate = (films) => (`<nav class="main-navigation">
   <div class="main-navigation__items">
@@ -12,28 +11,16 @@ const createMainNavTemplate = (films) => (`<nav class="main-navigation">
   </nav>`
 );
 
-export default class MainNavigation {
-  #element = null;
+export default class MainNavigation extends AbstractView {
   #films = null;
 
   constructor(films) {
+    super();
     this.#films = films;
-  }
-
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
   }
 
   get template() {
     return createMainNavTemplate(this.#films);
-  }
-
-  removeElement() {
-    this.#element = null;
   }
 }
 
