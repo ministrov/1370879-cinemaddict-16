@@ -30,7 +30,7 @@ render(headerEl, new UserRank().element, RenderPosition.BEFOREEND);
 render(mainEl, new MainNavigation(films).element, RenderPosition.BEFOREEND);
 render(mainEl, new SortList().element, RenderPosition.BEFOREEND);
 render(mainEl, filmsBoardComp, RenderPosition.BEFOREEND);
-render(mainEl, new ShowMoreBtn().element, RenderPosition.BEFOREEND);
+render(mainEl, moreBtnComponent.element, RenderPosition.BEFOREEND);
 render(footerStats, new FooterStats().element, RenderPosition.BEFOREEND);
 
 const onFilmCardClick = (evt) => {
@@ -78,12 +78,10 @@ const renderFilmCard = (count) => {
 
 renderFilmCard(MAX_FILMS);
 
-moreBtnComponent.renderFilmCard(() => {
+moreBtnComponent.addMoreFilmOnClick(() => {
   currentCount += MAX_FILMS;
-
   if (currentCount >= FILM_QUANTITY_CARD) {
-    moreBtnComponent.element.classList.add('visually-hidden');
-    moreBtnComponent.element.removeEventListener('click', renderFilmCard);
+    moreBtnComponent.removeElement();
   }
 
   renderFilmCard(currentCount);
