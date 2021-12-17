@@ -1,5 +1,5 @@
 import UserRank from './view/user-rank.js';
-import { render, RenderPosition } from './render.js';
+import { render, RenderPosition, remove } from './render.js';
 import MainNavigation from './view/main-nav.js';
 import SortList from './view/sorting.js';
 import FilmCard from './view/film-card.js';
@@ -14,20 +14,23 @@ import { isEscEvent } from './utils.js';
 const FILM_QUANTITY_CARD = 15;
 const MAX_FILMS = 5;
 const headerEl = document.querySelector('.header');
+const bodyEl = document.querySelector('body');
 const mainEl = document.querySelector('.main');
 const films = Array.from({length: FILM_QUANTITY_CARD}, generateFilm);
 let currentCount = MAX_FILMS;
 const filmsBoardComp = new FilmsBoard();
 const filmsBoardEl = filmsBoardComp.element.querySelector('.films-list__container');
 let currentPopup = null;
+const moreBtnComponent = new ShowMoreBtn();
+// const moreButton = document.querySelector('.films-list__show-more');
 const footer = document.querySelector('.footer');
 const footerStats = footer.querySelector('.footer__statistics');
 
 render(headerEl, new UserRank().element, RenderPosition.BEFOREEND);
 render(mainEl, new MainNavigation(films).element, RenderPosition.BEFOREEND);
 render(mainEl, new SortList().element, RenderPosition.BEFOREEND);
-render(mainEl, filmsBoardComp.element, RenderPosition.BEFOREEND);
-render(mainEl, new ShowMoreBtn().element, RenderPosition.BEFOREEND);
+render(mainEl, filmsBoardComp, RenderPosition.BEFOREEND);
+render(mainEl, moreBtnComponent.element, RenderPosition.BEFOREEND);
 render(footerStats, new FooterStats().element, RenderPosition.BEFOREEND);
 
 const onFilmCardClick = (evt) => {
@@ -37,7 +40,7 @@ const onFilmCardClick = (evt) => {
     target = target.closest('article');
   }
   const closePopup = () => {
-    mainEl.removeChild(currentPopup.element);
+    remove(currentPopup);
     document.body.classList.remove('hide-overflow');
     currentPopup = null;
   };
@@ -47,7 +50,7 @@ const onFilmCardClick = (evt) => {
 
   const popupData = films.filter((item) => `film-${item.id}` === target.id);
   currentPopup = new FilmPopup(popupData[0]);
-  render(mainEl, currentPopup.element, RenderPosition.BEFOREEND);
+  render(bodyEl, currentPopup, RenderPosition.BEFOREEND);
 
   document.body.classList.add('hide-overflow');
   const closePopupOnEsc = (event) => {
@@ -67,7 +70,7 @@ const renderFilmCard = (count) => {
   } else {
     for (let i = 0; i < count; i++) {
       const filmCard = new FilmCard(films[i]);
-      render(filmsBoardEl, filmCard.element, RenderPosition.BEFOREEND);
+      render(filmsBoardEl, filmCard, RenderPosition.BEFOREEND);
       filmCard.element.addEventListener('click', onFilmCardClick);
     }
   }
@@ -75,17 +78,13 @@ const renderFilmCard = (count) => {
 
 renderFilmCard(MAX_FILMS);
 
-const moreButton = document.querySelector('.films-list__show-more');
-
-const onMoreButtonClick = () => {
+moreBtnComponent.addMoreFilmOnClick(() => {
   currentCount += MAX_FILMS;
-
   if (currentCount >= FILM_QUANTITY_CARD) {
-    moreButton.classList.add('visually-hidden');
-    moreButton.removeEventListener('click', onMoreButtonClick);
+    moreBtnComponent.removeElement();
   }
 
   renderFilmCard(currentCount);
-};
+});
 
-moreButton.addEventListener('click', onMoreButtonClick);
+
