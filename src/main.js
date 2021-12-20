@@ -22,7 +22,6 @@ const filmsBoardComp = new FilmsBoard();
 const filmsBoardEl = filmsBoardComp.element.querySelector('.films-list__container');
 let currentPopup = null;
 const moreBtnComponent = new ShowMoreBtn();
-// const moreButton = document.querySelector('.films-list__show-more');
 const footer = document.querySelector('.footer');
 const footerStats = footer.querySelector('.footer__statistics');
 
@@ -81,7 +80,7 @@ renderFilmCard(MAX_FILMS);
 moreBtnComponent.addMoreFilmOnClick(() => {
   currentCount += MAX_FILMS;
   if (currentCount >= FILM_QUANTITY_CARD) {
-    moreBtnComponent.removeElement();
+    remove(moreBtnComponent);
   }
 
   renderFilmCard(currentCount);
