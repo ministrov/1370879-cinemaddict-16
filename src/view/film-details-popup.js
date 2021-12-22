@@ -166,6 +166,15 @@ export default class FilmPopup extends AbstractView {
   get template() {
     return createPopupTemplate(this.#filmInfo);
   }
-}
 
+  closePopup = (callback) => {
+    this._callback.close = callback;
+    this.element.addEventListener('click', this.#closePopup);
+  }
+
+  #closePopup = (evt) => {
+    evt.preventDefault();
+    this._callback.close();
+  }
+}
 

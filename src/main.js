@@ -30,14 +30,14 @@ render(mainEl, new MainNavigation(films).element, RenderPosition.BEFOREEND);
 render(mainEl, new SortList().element, RenderPosition.BEFOREEND);
 render(mainEl, filmsBoardComp, RenderPosition.BEFOREEND);
 render(mainEl, moreBtnComponent.element, RenderPosition.BEFOREEND);
-render(footerStats, new FooterStats().element, RenderPosition.BEFOREEND);
+render(footerStats, new FooterStats(films).element, RenderPosition.BEFOREEND);
 
-const onFilmCardClick = (evt) => {
-  let target = evt.target;
+const onFilmCardClick = (popupData) => {
+  // let target = evt.target;
 
-  if (target.tagName !== 'ARTICLE') {
-    target = target.closest('article');
-  }
+  // if (target.tagName !== 'ARTICLE') {
+  //   target = target.closest('article');
+  // }
   const closePopup = () => {
     remove(currentPopup);
     document.body.classList.remove('hide-overflow');
@@ -47,9 +47,10 @@ const onFilmCardClick = (evt) => {
     closePopup();
   }
 
-  const popupData = films.filter((item) => `film-${item.id}` === target.id);
-  currentPopup = new FilmPopup(popupData[0]);
+  // const popupData = films.filter((item) => `film-${item.id}` === target.id);
+  currentPopup = new FilmPopup(popupData);
   render(bodyEl, currentPopup, RenderPosition.BEFOREEND);
+  currentPopup.closePopup(closePopup);
 
   document.body.classList.add('hide-overflow');
   const closePopupOnEsc = (event) => {
@@ -70,7 +71,7 @@ const renderFilmCard = (count) => {
     for (let i = 0; i < count; i++) {
       const filmCard = new FilmCard(films[i]);
       render(filmsBoardEl, filmCard, RenderPosition.BEFOREEND);
-      filmCard.element.addEventListener('click', onFilmCardClick);
+      filmCard.showCardPopup(onFilmCardClick);
     }
   }
 };
