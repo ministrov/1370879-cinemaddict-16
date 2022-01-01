@@ -3,13 +3,14 @@ import { render, RenderPosition, remove} from '../render.js';
 import { isEscEvent } from '../utils.js';
 import FilmCard from '../view/film-card.js';
 
-const bodyEl = document.querySelector('body');
-let currentPopup = null;
+//const bodyEl = document.querySelector('body');
+//let currentPopup = null;
 export default class MoviePresenter {
   #popupData = {};
   #film = null;
   #filmCard = null;
   #filmContainer = null;
+  #currentPopup = new FilmPopup();
 
   constructor(filmContainer) {
     // this.#popupData = popupData;
@@ -18,19 +19,24 @@ export default class MoviePresenter {
 
   init = (film) => {
     this.#film = film;
+
     this.#filmCard = new FilmCard(this.#film);
+
+    // попап
+
     // if (currentPopup) {
     //   this.#closePopup();
     // }
     // this.#clickOnFilmCard(this.#popupData);
+    this.#renderFilm();
   }
 
   #renderFilm = () => {
-    render(this.#filmContainer, this.#filmCard, RenderPosition.BEFOREEND);
+    render(this.#filmContainer, this.#filmCard.element, RenderPosition.BEFOREEND);
   }
 
   #renderPopup = () => {
-    currentPopup = new FilmPopup();
+    const currentPopup = this.#currentPopup;
     render(bodyEl, currentPopup, RenderPosition.BEFOREEND);
     currentPopup.closePopup(this.#closePopup);
   }

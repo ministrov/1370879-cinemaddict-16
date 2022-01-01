@@ -16,22 +16,22 @@ const FILM_QUANTITY_CARD = 15;
 // const MAX_FILMS = 5;
 const headerEl = document.querySelector('.header');
 // const bodyEl = document.querySelector('body');
-const mainEl = document.querySelector('.main');
+const mainElement = document.querySelector('.main');
 const films = Array.from({length: FILM_QUANTITY_CARD}, generateFilm);
 // let currentCount = MAX_FILMS;
 // const filmsBoardComp = new FilmsBoard();
 // const filmsBoardEl = filmsBoardComp.element.querySelector('.films-list__container');
 // let currentPopup = null;
 // const moreBtnComponent = new ShowMoreBtn();
-const movieListPresenter = new MovieListPresenter(mainEl);
+const movieListPresenter = new MovieListPresenter(mainElement);
 const footer = document.querySelector('.footer');
 const footerStats = footer.querySelector('.footer__statistics');
 
 render(headerEl, new UserRank().element, RenderPosition.BEFOREEND);
-render(mainEl, new MainNavigation(films).element, RenderPosition.BEFOREEND);
-render(mainEl, new SortList().element, RenderPosition.BEFOREEND);
-// render(mainEl, filmsBoardComp, RenderPosition.BEFOREEND);
-// render(mainEl, moreBtnComponent.element, RenderPosition.BEFOREEND);
+render(mainElement, new MainNavigation(films).element, RenderPosition.BEFOREEND);
+render(mainElement, new SortList().element, RenderPosition.BEFOREEND);
+// render(mainElement, filmsBoardComp, RenderPosition.BEFOREEND);
+// render(mainElement, moreBtnComponent.element, RenderPosition.BEFOREEND);
 render(footerStats, new FooterStats(films).element, RenderPosition.BEFOREEND);
 
 movieListPresenter.init(films);
@@ -68,18 +68,6 @@ movieListPresenter.init(films);
 //   // currentPopup.element.querySelector('.film-details__close-btn').addEventListener('click', closePopup);
 // };
 
-// const renderFilmCard = (count) => {
-//   filmsBoardEl.innerHTML = '';
-//   if (films.length === 0) {
-//     render(filmsBoardEl, new NoFilmCard().element, RenderPosition.BEFOREEND);
-//   } else {
-//     for (let i = 0; i < count; i++) {
-//       const filmCard = new FilmCard(films[i]);
-//       render(filmsBoardEl, filmCard, RenderPosition.BEFOREEND);
-//       filmCard.showCardPopup(onFilmCardClick);
-//     }
-//   }
-// };
 
 // renderFilmCard(MAX_FILMS);
 
@@ -91,5 +79,3 @@ movieListPresenter.init(films);
 
 //   renderFilmCard(currentCount);
 // });
-
-
