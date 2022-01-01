@@ -3,8 +3,8 @@ import { render, RenderPosition, remove} from '../render.js';
 import { isEscEvent } from '../utils.js';
 import FilmCard from '../view/film-card.js';
 
-//const bodyEl = document.querySelector('body');
-//let currentPopup = null;
+const bodyEl = document.querySelector('body');
+let currentPopup = null;
 export default class MoviePresenter {
   #popupData = {};
   #film = null;
@@ -36,7 +36,6 @@ export default class MoviePresenter {
   }
 
   #renderPopup = () => {
-    const currentPopup = this.#currentPopup;
     render(bodyEl, currentPopup, RenderPosition.BEFOREEND);
     currentPopup.closePopup(this.#closePopup);
   }
