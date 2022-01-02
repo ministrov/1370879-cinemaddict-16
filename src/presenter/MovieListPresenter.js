@@ -3,6 +3,7 @@ import FilmsBoard from '../view/films-board.js';
 import { render, RenderPosition } from '../render.js';
 import MoviePresenter from './MoviePresenter.js';
 import showMoreBtn from '../view/show-more-btn.js';
+import { nanoid } from 'nanoid';
 // import showMoreButton from '../view/show-more-btn.js';
 // const mainEl = document.querySelector('.main');
 // const moreBtnComponent = new showMoreButton();
@@ -46,7 +47,7 @@ export default class MovieListPresenter {
     films.forEach((film) => {
       const moviePresenter = new MoviePresenter(this.#filmsBoardElement);
 
-      this.#filmsPresenterMap.set((Math.random() * 1000).toFixed(), moviePresenter);
+      this.#filmsPresenterMap.set(nanoid(), moviePresenter);
       moviePresenter.init(film);
     });
   }

@@ -3,18 +3,17 @@ import { render, RenderPosition, remove} from '../render.js';
 import { isEscEvent } from '../utils.js';
 import FilmCard from '../view/film-card.js';
 
-const bodyEl = document.querySelector('body');
 let currentPopup = null;
 export default class MoviePresenter {
-  #popupData = {};
   #film = null;
   #filmCard = null;
   #filmContainer = null;
-  #currentPopup = new FilmPopup();
+  #bodyElement = document.querySelector('body');
+  #popupData = null;
 
-  constructor(filmContainer) {
-    // this.#popupData = popupData;
-    this.#filmContainer = filmContainer;
+  constructor(popupData) {
+    this.#popupData = popupData;
+    // this.#filmContainer = filmContainer;
   }
 
   init = (film) => {
@@ -24,10 +23,10 @@ export default class MoviePresenter {
 
     // попап
 
-    // if (currentPopup) {
-    //   this.#closePopup();
-    // }
-    // this.#clickOnFilmCard(this.#popupData);
+    if (currentPopup) {
+      this.#closePopup();
+    }
+    this.#clickOnFilmCard(this.#popupData);
     this.#renderFilm();
   }
 
@@ -36,19 +35,21 @@ export default class MoviePresenter {
   }
 
   #renderPopup = () => {
-    render(bodyEl, currentPopup, RenderPosition.BEFOREEND);
+    currentPopup = new FilmPopup(this.#popupData);
+    render(this.#bodyElement, currentPopup, RenderPosition.BEFOREEND);
     currentPopup.closePopup(this.#closePopup);
   }
 
   // Popup
   #clickOnFilmCard = () => {
+    currentPopup = new FilmPopup(this.#popupData);
     this.#renderPopup();
   }
 
   #closePopup = () => {
+    currentPopup = new FilmPopup(this.#popupData);
     remove(currentPopup);
     document.body.classList.remove('hide-overflow');
-    currentPopup = null;
     currentPopup.closePopup(this.#closePopup);
     this.#closePopupOnEsc();
     document.addEventListener('keydown', this.#closePopupOnEsc);

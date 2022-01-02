@@ -1,6 +1,6 @@
 import AbstractView from './abstract';
-const createFilmCardTemplate = ({id, filmInfo}) => {
-  const {title, totalRating, genre, poster, description, comments, runtime} = filmInfo;
+const createFilmCardTemplate = ({id, filmInfo, comments}) => {
+  const {title, totalRating, genre, poster, description, runtime} = filmInfo;
   return `<article class="film-card" id="film-${id}">
     <a class="film-card__link">
     <h3 class="film-card__title">${title}</h3>
