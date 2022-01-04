@@ -1,6 +1,6 @@
 import NoFilmCard from '../view/no-film-card.js';
 import FilmsBoard from '../view/films-board.js';
-import { render, RenderPosition } from '../render.js';
+import { render, RenderPosition, remove } from '../render.js';
 import MoviePresenter from './MoviePresenter.js';
 import showMoreBtn from '../view/show-more-btn.js';
 import { nanoid } from 'nanoid';
@@ -61,7 +61,7 @@ export default class MovieListPresenter {
       this.#currentCount += MAX_FILMS;
 
       if (this.#currentCount >= FILM_QUANTITY_CARD) {
-        this.#showMoreButton.removeElement();
+        remove(this.#showMoreButton);
       }
 
       this.#renderFilmCards(this.#films.slice(0, this.#currentCount));

@@ -40,6 +40,16 @@ export default class FilmCard extends AbstractView {
     this._callback.showCardPopup(this.#filmInfo);
   }
 
+  toggleAlreadyWatched = (callback) => {
+    this._callback.toggleAlreadyWatched = callback;
+    this.element.querySelector('.film-card__controls-item--add-to-watchlist').addEventListener('click', this.#toggleAlreadyWatched);
+  }
+
+  #toggleAlreadyWatched = (evt) => {
+    evt.preventDefault();
+    this._callback.toggleAlreadyWatched(this.filmInfo);
+  }
+
   get template() {
     return createFilmCardTemplate(this.#filmInfo);
   }

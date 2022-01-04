@@ -14,7 +14,7 @@ import MovieListPresenter from './presenter/MovieListPresenter.js';
 
 const FILM_QUANTITY_CARD = 15;
 // const MAX_FILMS = 5;
-const headerEl = document.querySelector('.header');
+const headerElement = document.querySelector('.header');
 // const bodyEl = document.querySelector('body');
 const mainElement = document.querySelector('.main');
 const films = Array.from({length: FILM_QUANTITY_CARD}, generateFilm);
@@ -27,7 +27,7 @@ const movieListPresenter = new MovieListPresenter(mainElement);
 const footer = document.querySelector('.footer');
 const footerStats = footer.querySelector('.footer__statistics');
 
-render(headerEl, new UserRank().element, RenderPosition.BEFOREEND);
+render(headerElement, new UserRank().element, RenderPosition.BEFOREEND);
 render(mainElement, new MainNavigation(films).element, RenderPosition.BEFOREEND);
 render(mainElement, new SortList().element, RenderPosition.BEFOREEND);
 // render(mainElement, filmsBoardComp, RenderPosition.BEFOREEND);

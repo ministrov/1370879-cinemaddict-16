@@ -2,31 +2,28 @@ import FilmPopup from '../view/film-details-popup.js';
 import { render, RenderPosition, remove} from '../render.js';
 import { isEscEvent } from '../utils.js';
 import FilmCard from '../view/film-card.js';
-
-let currentPopup = null;
 export default class MoviePresenter {
   #film = null;
   #filmCard = null;
   #filmContainer = null;
   #bodyElement = document.querySelector('body');
-  #popupData = null;
+  #currentPopup = null;
 
-  constructor(popupData) {
-    this.#popupData = popupData;
-    // this.#filmContainer = filmContainer;
+  constructor(filmContainer) {
+    this.#filmContainer = filmContainer;
   }
 
   init = (film) => {
     this.#film = film;
 
     this.#filmCard = new FilmCard(this.#film);
-
+    this.#filmCard.showCardPopup(this.#clickOnFilmCard);
+    this.#filmCard.toggleAlreadyWatched(this.#toggleAlreadyWatched);
     // попап
 
-    if (currentPopup) {
-      this.#closePopup();
-    }
-    this.#clickOnFilmCard(this.#popupData);
+    // if (this.#currentPopup) {
+    //   this.#closePopup();
+    // }
     this.#renderFilm();
   }
 
@@ -35,24 +32,21 @@ export default class MoviePresenter {
   }
 
   #renderPopup = () => {
-    currentPopup = new FilmPopup(this.#popupData);
-    render(this.#bodyElement, currentPopup, RenderPosition.BEFOREEND);
-    currentPopup.closePopup(this.#closePopup);
+    this.#currentPopup = new FilmPopup(this.#film);
+    render(this.#bodyElement, this.#currentPopup, RenderPosition.BEFOREEND);
+    this.#currentPopup.closePopup(this.#closePopup);
+    document.addEventListener('keydown', this.#closePopupOnEsc);
   }
 
   // Popup
   #clickOnFilmCard = () => {
-    currentPopup = new FilmPopup(this.#popupData);
     this.#renderPopup();
   }
 
   #closePopup = () => {
-    currentPopup = new FilmPopup(this.#popupData);
-    remove(currentPopup);
+    remove(this.#currentPopup);
     document.body.classList.remove('hide-overflow');
-    currentPopup.closePopup(this.#closePopup);
-    this.#closePopupOnEsc();
-    document.addEventListener('keydown', this.#closePopupOnEsc);
+    // this.#currentPopup.closePopup(this.#closePopup);
   }
 
   #closePopupOnEsc = (event) => {
@@ -60,7 +54,10 @@ export default class MoviePresenter {
       this.#closePopup();
       document.removeEventListener('keydown', this.#closePopupOnEsc);
     }
-    document.addEventListener('keydown', this.#closePopupOnEsc);
   }
-  // Обработка событий
+
+  #toggleAlreadyWatched = (film) => {
+    film.userDetails.alreadyWatched = !film.userDetails.alreadyWatched;
+  }
 }
+
